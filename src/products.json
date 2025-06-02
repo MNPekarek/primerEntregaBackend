@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Remera Adidas",
+    "description": "Remera de entrenamiento",
+    "code": "Agn234",
+    "price": "90",
+    "status": true,
+    "stock": 10,
+    "category": "remera",
+    "thumbnail": []
+  }
+  
+]
