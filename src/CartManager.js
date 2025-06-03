@@ -41,12 +41,17 @@ class CartManager{
         const cartsJson = await fs.promises.readFile(this.path, "utf-8");
         const carts = JSON.parse(cartsJson);
 
-        carts.forEach(cart => {
-            if(cart.id == cid){
+        const cart = carts.find(cart => cart.id === cid);
 
-                cart.products.push({ id : pid , quantity });
-            }            
-        });
+        if (cart) {
+            const productIndex = cart.products.findIndex(product => product.id = pid);
+
+            if (productIndex !== -1) {
+                cart.products[productIndex].quantity += quantity;
+            } else {
+                cart.products.push({ id: pid, quantity });
+            }
+        }
 
         await fs.promises.writeFile(this.path, JSON.stringify(carts, null, 2), "utf-8")
 
