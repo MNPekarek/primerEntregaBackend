@@ -44,7 +44,7 @@ class CartManager{
         const cart = carts.find(cart => cart.id === cid);
 
         if (cart) {
-            const productIndex = cart.products.findIndex(product => product.id = pid);
+            const productIndex = cart.products.findIndex(product => product.id === pid);
 
             if (productIndex !== -1) {
                 cart.products[productIndex].quantity += quantity;

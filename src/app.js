@@ -24,7 +24,7 @@ app.get("/api/products", async(req, res)=> {
 // GET
 // Obtener datos por id
 app.get("/api/products/:pid", async(req, res)=>{
-    const pid = req.params.pid;
+    const pid = parseInt(req.params.pid);
 
     const product = await productManager.getProductsById(pid);
     res.status(200).json({ product, message: "Producto por Id "});
@@ -92,7 +92,7 @@ app.get("/api/carts/:cid", async(req, res)=>{
 // POST
 // Agregar productos al carrito
 app.post("/api/carts/:cid/product/:pid", async(req , res)=>{
-    const cid = req.params.cid;
+    const cid = parseInt(req.params.cid);
     const pid = parseInt(req.params.pid);
     const quantity = req.body.quantity;
 

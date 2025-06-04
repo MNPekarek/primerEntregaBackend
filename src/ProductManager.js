@@ -17,12 +17,25 @@ class ProductManager{
         }        
     }
 
-    async getProductsById(idProduct){   
-        const fileData = await fs.promises.readFile(this.pathFile, "utf-8");
-        const products = json.parse(fileData);
+    async getProductsById(idProduct){  
+        try {
+            const fileData = await fs.promises.readFile(this.pathFile, "utf-8");
+            const products = JSON.parse(fileData);
+            
+            const product = products.find(product => product.id === idProduct);
+            
+            if (!product) {
+                throw new Error(`Producto con ID ${idProduct} no encontrado`);
+            }
+            
+            return product;
+        } catch (error) {
+            throw new Error(`Error al buscar el Id del producto ${error.message}`);           
+        } 
+
+
         
-        const product = products.find((productData)=> productData.id == idProduct);
-        return product;
+        
     }
 
     generateNewId(products){
@@ -50,7 +63,7 @@ class ProductManager{
             await fs.promises.writeFile(this.pathFile, JSON.stringify(products, null, 2) , "utf-8" );
             return products;
         } catch (error) {
-            throw new Error("Error al añadir el producto - ", error-message);            
+            throw new Error("Error al añadir el producto - ", error.message);            
         }
     }
 
