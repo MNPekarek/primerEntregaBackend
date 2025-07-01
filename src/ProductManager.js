@@ -61,7 +61,7 @@ class ProductManager{
 
             // guardar en el archivo -sobreescribir
             await fs.promises.writeFile(this.pathFile, JSON.stringify(products, null, 2) , "utf-8" );
-            return products;
+            return product;
         } catch (error) {
             throw new Error("Error al añadir el producto - ", error.message);            
         }
