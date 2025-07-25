@@ -1,24 +1,58 @@
-<div>
-    <h1>Real time Products</h1>
+<div class="container">
+  <h1>🛍️ Real time Products</h1>
 
-    <form id="formNewProduct">
-        <input type="text" name="title" placeholder="ingrese el titulo" required>  
-        <input type="text" name="description" placeholder="ingrese la descripción" required>    
-        <input type="text" name="code" placeholder="ingrese el codigo" required> 
-        <input type="number" name="price" placeholder="ingrese el precio" required>  
-        <input type="number" name="stock" placeholder="ingrese el stock" required> 
-        <input type="text" name="category" placeholder="ingrese la categoria" required> 
+  <section class="from-section">
+    <h2>Agregar un nuevo producto</h2>
+    <form id="formNewProduct" class="product-form">
+      <input
+        type="text"
+        name="title"
+        placeholder="ingrese el titulo"
+        required
+      />
+      <input
+        type="text"
+        name="description"
+        placeholder="ingrese la descripción"
+        required
+      />
+      <input type="text" name="code" placeholder="ingrese el codigo" required />
+      <input
+        type="number"
+        name="price"
+        placeholder="ingrese el precio"
+        required
+      />
+      <input
+        type="number"
+        name="stock"
+        placeholder="ingrese el stock"
+        required
+      />
+      <input
+        type="text"
+        name="category"
+        placeholder="ingrese la categoria"
+        required
+      />
 
-        <button type="submit">Enviar</button>
+      <button type="submit">Agregar</button>
     </form>
+  </section>
 
-
+  <section class="list-section">
     <h2>Lista de productos</h2>
-    <ul id="productsList">
-        {{#each products}}
-          <li>{{this.title}} - {{this.price}} </li>
-        {{/each}}
-    </ul>
+    <div id="productsList" class="product-list">
+      {{#each products}}
+        <article class="product-card">
+          <h3>{{this.title}}</h3>
+          <p><strong>Precio:</strong> ${{this.price}}</p>
+          <p><strong>Stock:</strong> {{this.stock}}</p>
+          <p><strong>Categoría:</strong> {{this.category}}</p>
+        </article>
+      {{/each}}
+    </div>
+  </section>
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/index.js"></script>
