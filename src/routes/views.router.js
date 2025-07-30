@@ -23,6 +23,10 @@ viewsRouter.get("/", async (req, res) => {
   }
 });
 
+viewsRouter.get("/cart", (req, res) => {
+  res.render("cart");
+});
+
 viewsRouter.get("/realtimeproducts", async (req, res) => {
   try {
     const products = await Product.find().lean(); 

@@ -69,3 +69,27 @@
   background-color: #333;
   color: #fff;
 }
+
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2ecc71;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  font-family: sans-serif;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.notification.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.notification.show {
+  opacity: 1;
+}
